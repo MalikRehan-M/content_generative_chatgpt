@@ -6,12 +6,12 @@ require("dotenv").config();
 const axios = require('axios');
 
 
-contentRouter.get("/", async (req, res) => {
+contentRouter.post("/", async (req, res) => {
   const token = req.headers.authorization.split(" ")[1];
-
+  console.log("h")
   try {
     const decoded = jwt.verify(token, "masai");
-    const { keyword, content_type } = req.query;
+    const { keyword, content_type } = req.body;
     const prompt = `Generate a ${content_type} about ${keyword}.`;
     const response = await axios.post('https://api.openai.com/v1/engines/davinci-codex/completions', {
       prompt,

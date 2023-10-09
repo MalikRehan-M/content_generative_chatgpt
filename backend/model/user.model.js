@@ -2,6 +2,8 @@ const mongoose=require("mongoose")
 
 //user schema
 const userSchema=mongoose.Schema({
+    firtName: String,
+    lastName: String,
     email: String,
     pass: String,
 },{
